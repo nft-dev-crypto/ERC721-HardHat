@@ -1,9 +1,18 @@
 require('dotenv').config();
 require('@nomicfoundation/hardhat-ignition');
-const { vars } = require("hardhat/config");
+require("@nomicfoundation/hardhat-toolbox");
+const { vars, task } = require("hardhat/config");
 
 const { API_URL, PRIVATE_KEY, BASE_SCAN_API_KEY } = process.env;
 const ETHERSCAN_API_KEY = vars.get("ETHERSCAN_API_KEY");
+
+task("accounts", "Prints the list of accounts", async (taskArgs: any, hre: any) => {
+  const accounts = await hre.ethers.getSigners();
+
+  for (const account of accounts) {
+    console.log(account.address);
+  }
+});
 
 module.exports = {
   solidity: '0.8.27',
