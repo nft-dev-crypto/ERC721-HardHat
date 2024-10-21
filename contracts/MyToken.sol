@@ -30,4 +30,8 @@ contract MyToken is ERC721 {
         // require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
         return baseURI;
     }
+
+    function totalSupply() public view returns (uint256) {
+        return s_tokenCounter;
+    }
 }
