@@ -9,6 +9,8 @@ contract MyToken is ERC721URIStorage, Ownable {
     string public constant baseURI =
         "https://amethyst-brilliant-moose-34.mypinata.cloud/ipfs/QmdTQ1ctbRQVjajezPdVrRboscaazhDM13FD4LzTPp6feY/";
     uint256 private s_tokenCounter;
+    // withdraw addresses
+    address myaddress = 0x8e549687Cec0b4E432F6E365491fa766661D62c4;
 
     // Mapping to store URIs for each token ID
 
@@ -41,11 +43,6 @@ contract MyToken is ERC721URIStorage, Ownable {
         return s_tokenCounter;
     }
 
-    // function withdraw() public onlyOwner {
-    //     uint256 balance = address(this).balance;
-    //     require(balance > 0, "No funds to withdraw");
-    //     payable(owner()).transfer(balance);
-    // }
     function uint2str(uint256 _i) internal pure returns (string memory) {
         if (_i == 0) {
             return "0";
@@ -66,5 +63,10 @@ contract MyToken is ERC721URIStorage, Ownable {
             _i /= 10;
         }
         return string(bstr);
+    }
+
+    function withdraw() public payable onlyOwner {
+        uint256 balance = address(this).balance;
+        require(payable(myaddress).send(balance));
     }
 }
