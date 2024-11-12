@@ -25,7 +25,7 @@ module.exports = {
     },
     // testnet
     "base-sepolia": {
-      url: "https://sepolia.base.org",
+      url: API_URL,
       accounts: [`0x${PRIVATE_KEY}`],
     },
   },
