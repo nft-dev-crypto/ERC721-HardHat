@@ -1,8 +1,8 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 
-const DeployMyTokenModule = buildModule("DeployMyTokenModule", (m) => {
-  const myToken = m.contract("MyToken");
+const DeployMyTokenModule = buildModule("DeployXXCModule", (m) => {
+  const myToken = m.contract("XXC");
 
   return { myToken };
 });
